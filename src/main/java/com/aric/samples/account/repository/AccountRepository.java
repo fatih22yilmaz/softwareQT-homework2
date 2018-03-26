@@ -1,0 +1,15 @@
+/**
+ *
+ */
+package com.aric.samples.account.repository;
+
+import com.aric.samples.account.model.Account;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import java.util.List;
+
+@RepositoryRestResource(collectionResourceRel = "account", path = "account")
+public interface AccountRepository extends PagingAndSortingRepository<Account, Long> {
+    public List<Account> findByOwnerFirstNameAndOwnerLastName(String ownerFirstName, String ownerLastName);
+}
